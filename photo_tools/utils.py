@@ -246,7 +246,7 @@ def syscmd(cmd: typing.Union[str, list], encoding: str=''):
         return p.returncode
 
 
-def test_value(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> True:
+def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool=False, stop: bool=False) -> True:
     """
     Test if a value is an instance of type `dtype`. May accept a value of any kind.
 

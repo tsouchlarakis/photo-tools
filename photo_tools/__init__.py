@@ -16,7 +16,7 @@ import pathlib
 import re
 import subprocess
 import typing
-from .utils import find_binary, logger_setup, ensurelist, syscmd, split_at, test_value, rename_dict_keys
+from .utils import find_binary, logger_setup, ensurelist, syscmd, split_at, assert_value_dtype, rename_dict_keys
 from collections import defaultdict
 from xml.etree import ElementTree
 
@@ -310,7 +310,7 @@ class EXIF(object):
         """
         def detect_dtype(val: typing.Any):
             """
-            Wrap `test_value()` in the context of EXIF metadata cleaning. Acceptable
+            Wrap `assert_value_dtype()` in the context of EXIF metadata cleaning. Acceptable
             return values are ['bool', 'float', 'int', 'date', 'datetime', 'str'].
             """
             valid_dtypes = ['bool', 'float', 'int', 'datetime', 'date', 'str']
@@ -318,7 +318,7 @@ class EXIF(object):
                 if dtype == 'str':
                     return dtype
                 else:
-                    if test_value(val, dtype):
+                    if assert_value_dtype(val, dtype):
                         return dtype
 
             # 'Otherwise' condition
@@ -331,7 +331,7 @@ class EXIF(object):
             for k, v in d.items():
                 dtype = detect_dtype(v)
                 if dtype in ['bool', 'date', 'datetime', 'int', 'float']:
-                    coerced_value = test_value(v, dtype, return_coerced_value=True)
+                    coerced_value = assert_value_dtype(v, dtype, return_coerced_value=True)
                     if v != coerced_value:
                         newexifd[fpath][k] = coerced_value
                         continue
