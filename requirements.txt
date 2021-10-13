@@ -4,5 +4,12 @@
 #
 #    pip-compile requirements.in
 #
+--index-url https://asooklaris:AKCp5e3VH4EtFLotAYboeSJgQYc8B65tVZK4521a8MVNM3P8A3WVd5kDetEVGPT96Ppe7nynZ@artifacts.apple.com/api/pypi/pypi-ai/simple
+--trusted-host pypi.python.org
+--trusted-host pypi.org
+--trusted-host artifacts.apple.com
+
+click==8.0.3
+    # via -r requirements.in
 pyexiftool==0.4.11
     # via -r requirements.in
