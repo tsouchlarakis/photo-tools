@@ -11,4 +11,4 @@ recursive-exclude * *.py[co]
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
 include versioneer.py
 include photo_tools/_version.py
-include photo_tools/data
+include photo_tools/data/*
