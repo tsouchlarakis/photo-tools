@@ -111,7 +111,7 @@ def find_binary(bin_name: str,
         None
     """
     bin_paths = [x for x in sys.path if os.path.basename(x) in ['bin', 'lib']] + \
-        ['/usr/bin', '/usr/local/bin']
+        ['/usr/bin', '/usr/local/bin', '/opt/homebrew/bin']
 
     if len(additional_bin_paths):
         bin_paths = bin_paths + additional_bin_paths
