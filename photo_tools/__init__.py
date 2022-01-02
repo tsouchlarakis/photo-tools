@@ -222,20 +222,20 @@ class EXIF(object):
         tracker = {}
         for fpath in self.fpath:
             for tag_name, tag_value in attrs.items():
-                default_cmd = f'{self.exiftool_bin} -overwrite_original -{tag_name}="{str(value)}" "{fpath}"'
+                default_cmd = f'{self.exiftool_bin} -overwrite_original -{tag_name}="{str(tag_value)}" "{fpath}"'
 
                 # Handle any special tag_name cases
                 if tag_name == 'Keywords':
                     # Must be written in format:
                     #     exiftool -keywords=one -keywords=two -keywords=three FILE
                     # Otherwise, comma-separated keywords will be written as a single string
-                    if isinstance(value, str):
-                        if ',' in value:
-                            value = value.split(', ')
+                    if isinstance(tag_value, str):
+                        if ',' in tag_value:
+                            tag_value = tag_value.split(', ')
 
-                    if isinstance(value, list):
-                        if len(value) > 1:
-                            kwd_cmd = ' '.join(['-keywords="' + str(x) + '"' for x in value])
+                    if isinstance(tag_value, list):
+                        if len(tag_value) > 1:
+                            kwd_cmd = ' '.join(['-keywords="' + str(x) + '"' for x in tag_value])
 
                     if 'kwd_cmd' in locals():
                         cmd = f'{self.exiftool_bin} -overwrite_original {kwd_cmd} "{fpath}"'

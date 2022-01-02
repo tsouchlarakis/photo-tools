@@ -120,10 +120,9 @@ def find_binary(bin_name: str,
 
     match = []
     for path in bin_paths:
-        os.chdir(path)
-        binaries = listfiles()
+        binaries = listfiles(path=path, full_names=True)
         for binary in binaries:
-            if bin_name == binary:
+            if bin_name == os.path.basename(binary):
                 match_item = os.path.join(path, binary)
                 match.append(match_item)
                 logger.info(f'Matching binary found "{match_item}"')
