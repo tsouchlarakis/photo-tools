@@ -331,7 +331,7 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
             if stop:
                 raise e
             else:
-                logger.warning(str(e))
+                logger.debug(str(e))
 
     # Test integer
     elif dtype in ['int', 'integer']:
@@ -346,7 +346,7 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
                 if stop:
                     raise e
                 else:
-                    logger.warning(str(e))
+                    logger.debug(str(e))
 
     # Test float
     elif dtype == 'float':
@@ -359,7 +359,7 @@ def assert_value_dtype(value: typing.Any, dtype: str, return_coerced_value: bool
                 if stop:
                     raise e
                 else:
-                    logger.warning(str(e))
+                    logger.debug(str(e))
 
     # Test date
     elif dtype == 'date':
